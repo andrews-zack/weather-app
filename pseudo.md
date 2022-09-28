@@ -48,7 +48,8 @@
 ## FUNC
 - **init()**
     * clearDOM()
-    * createElements()
+    * generateElem()
+        - for each element needed in HTML
 - **buttonClick()**
     * added to eventListener on submit button for ZIP code field
     * validates user input
@@ -57,8 +58,8 @@
     * clearDOM()
     * displays hidden elements
     * getData()
-- **createElements()**
-    * grabs original div by id
+- **generateElem()**
+    <!-- * grabs original div by id -->
     * creates elements (divs/containers/rows/colums) to go into the html
     * creates attributes by id for each element to size and place them
     * appends the child elements to the html body div
@@ -78,3 +79,12 @@
 - **clearDOM()**
     * sets all text content of the objects within weatherState to null
     * done before any more info can populate the DOM
+
+
+
+- get body html element by its ID
+
+- init()
+    * clearDOM()
+    * generateElem()
+        * div -  
