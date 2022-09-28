@@ -87,4 +87,4 @@
 - init()
     * clearDOM()
     * generateElem()
-        * div -  
+        * div - container
