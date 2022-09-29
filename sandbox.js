@@ -3,7 +3,6 @@
 addEventListener("DOMContentLoaded", init);
 let main = document.getElementById("main");
 let submitBtn;
-
 const apiKey = "c80b9e6179cc79a9985529685d466a22"
 // let city = document.getElementById("city");
 // let temp = document.getElementById("temp");
