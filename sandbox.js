@@ -31,12 +31,13 @@ function showError() {
 async function getWeather(url) {
     try {
     const response = await axios.get(url);
-    // console.log(response);
+    console.log(response);
     cityBody.textContent = response.data.name;
     kelvBody.textContent = Math.round(response.data.main.temp);
     farBody.textContent = Math.round(((response.data.main.temp) - 273.15) * (9/5) + 32);
     celBody.textContent = Math.round((response.data.main.temp) - 273.15);
     condBody.textContent = response.data.weather[0].description;
+    iconBody.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
     cityCont.style.visibility = "visible";
     tempCont.style.visibility = "visible";
     condCont.style.visibility = "visible";
