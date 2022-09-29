@@ -98,7 +98,7 @@ function generateElem(
         childVar.id = elemId;
         parentVar.appendChild(childVar);
         window[childVar] = document.getElementById(childVar);
-    };
+};
     
     // let headerDiv = document.getElementById("headerDiv");
     // let inputCont = document.getElementById("inputCont");
