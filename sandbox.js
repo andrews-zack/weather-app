@@ -1,18 +1,24 @@
+// const { default: axios } = require("axios");
+
 addEventListener("DOMContentLoaded", init);
 let main = document.getElementById("main");
 let submitBtn;
+
+const apiKey = "c80b9e6179cc79a9985529685d466a22"
 // let city = document.getElementById("city");
 // let temp = document.getElementById("temp");
 // let condition = document.getElementById("condition");
 // let icon = document.getElementById("icon");
 // let zipError = document.getElementById("zip-error");
 
-let appState = {
-    cityBody: "",
-    tempBody: "",
-    condBody: "",
-    iconBody: "",
-}
+// let appState = {
+//     cityBody: "",
+//     kelvBody: "",
+//     farBody: "",
+//     celBody: "",
+//     condBody: "",
+//     iconBody: "",
+// }
 
 function showError() {
     cityCont.style.visibility = "hidden";
@@ -22,11 +28,22 @@ function showError() {
     errorCont.style.visibility = "visible";
 };
 
-function showCont() {
+async function getWeather(url) {
+    try {
+    const response = await axios.get(url);
+    // console.log(response);
+    cityBody.textContent = response.data.name;
+    kelvBody.textContent = Math.round(response.data.main.temp);
+    farBody.textContent = Math.round(((response.data.main.temp) - 273.15) * (9/5) + 32);
+    celBody.textContent = Math.round((response.data.main.temp) - 273.15);
+    condBody.textContent = response.data.weather[0].description;
     cityCont.style.visibility = "visible";
     tempCont.style.visibility = "visible";
     condCont.style.visibility = "visible";
     iconCont.style.visibility = "visible";
+    } catch(error) {
+        showError();
+    }
 }
 
 function init() {
@@ -36,7 +53,11 @@ function init() {
     condCont.style.visibility = "hidden";
     iconCont.style.visibility = "hidden";
     submitBtn = document.getElementById("submitBtn");
-    submitBtn.addEventListener("click", showCont);
+    submitBtn.addEventListener("click", function() {
+        let zip = zipInput.value;
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${apiKey}`;
+        getWeather(apiUrl);
+    });
 };
 
 
@@ -91,22 +112,22 @@ function generateElem(
         generateElem("cityCont", "div", "container p-2", "cityCont", null, main);
     generateElem("cityCard", "div", "card text-center border-dark", "cityCard", null, cityCont);
         generateElem("cityHead", "h5", "card-header bg-info", "cityHead", "City", cityCard);
-        generateElem("cityBody", "div", "card-body", "cityBody", "Placeholder", cityCard);
+        generateElem("cityBody", "div", "card-body", "cityBody", null, cityCard);
 generateElem("tempCont", "div", "container p-2", "tempCont", null, main);
     generateElem("tempGroup", "div", "card-group text-center border-dark", "tempGroup", null, tempCont);
         generateElem("kelvCard", "div", "card col-12", "kelvCard", null, tempGroup);
             generateElem("kelvHead", "h5", "card-header bg-info text-info", "kelvHead", "hi", kelvCard);
-            generateElem("kelvBody", "div", "card-body", "kelvBody", "Placeholder", kelvCard);
+            generateElem("kelvBody", "div", "card-body", "kelvBody", null, kelvCard);
         generateElem("farCard", "div", "card col-12", "farCard", null, tempGroup);
             generateElem("farHead", "h5", "card-header bg-info", "farHead", "Temperature", farCard);
-            generateElem("farBody", "div", "card-body", "farBody", "Placeholder", farCard);
+            generateElem("farBody", "div", "card-body", "farBody", null, farCard);
         generateElem("celCard", "div", "card col-12", "celCard", null, tempGroup);
             generateElem("celHead", "h5", "card-header bg-info text-info", "celHead", "hi", celCard);
-            generateElem("celBody", "div", "card-body", "celBody", "Placeholder", celCard);
+            generateElem("celBody", "div", "card-body", "celBody", null, celCard);
 generateElem("condCont", "div", "container p-2", "condCont", null, main);
     generateElem("condCard", "div", "card text-center border-dark", "condCard", null, condCont);
         generateElem("condHead", "h5", "card-header bg-info", "condHead", "Condition", condCard);
-        generateElem("condBody", "div", "card-body", "condBody", "Placeholder", condCard);
+        generateElem("condBody", "div", "card-body", "condBody", null, condCard);
 generateElem("iconCont", "div", "container p-2", "iconCont", null, main);
     generateElem("iconCard", "div", "card text-center border-dark", "iconCard", null, iconCont);
         generateElem("iconHead", "h5", "card-header bg-info", "iconHead", "Icon", iconCard);
