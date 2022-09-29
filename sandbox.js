@@ -1,25 +1,47 @@
+addEventListener("DOMContentLoaded", init);
+let main = document.getElementById("main");
+let submitBtn;
 // let city = document.getElementById("city");
 // let temp = document.getElementById("temp");
 // let condition = document.getElementById("condition");
 // let icon = document.getElementById("icon");
 // let zipError = document.getElementById("zip-error");
 
+let appState = {
+    cityBody: "",
+    tempBody: "",
+    condBody: "",
+    iconBody: "",
+}
+
 function showError() {
-    city.setAttribute("class", "d-none");
-    temp.setAttribute("class", "d-none");
-    condition.setAttribute("class", "d-none");
-    icon.setAttribute("class", "d-none");
-    zipError.classList.remove("d-none");
+    cityCont.style.visibility = "hidden";
+    tempCont.style.visibility = "hidden";
+    condCont.style.visibility = "hidden";
+    iconCont.style.visibility = "hidden";
+    errorCont.style.visibility = "visible";
 };
+
+function showCont() {
+    cityCont.style.visibility = "visible";
+    tempCont.style.visibility = "visible";
+    condCont.style.visibility = "visible";
+    iconCont.style.visibility = "visible";
+}
 
 function init() {
     allElements();
-    
+    cityCont.style.visibility = "hidden";
+    tempCont.style.visibility = "hidden";
+    condCont.style.visibility = "hidden";
+    iconCont.style.visibility = "hidden";
+    submitBtn = document.getElementById("submitBtn");
+    submitBtn.addEventListener("click", showCont);
 };
+
 
 // showError();
 
-let main = document.getElementById("main");
 // let div1 = document.createElement("div");
 // div1.textContent = "Weather App";
 // main.appendChild(div1);
@@ -55,18 +77,18 @@ function generateElem(
         childVar.id = elemId;
         parentVar.appendChild(childVar);
         window[childVar] = document.getElementById(childVar);
-};
-
-// let headerDiv = document.getElementById("headerDiv");
-// let inputCont = document.getElementById("inputCont");
-
-function allElements() {
-generateElem("headerDiv", "div", "h1 text-center", "headerDiv", "Weather App", main);
-generateElem("inputCont", "div", null, "inputCont", null, main);
-    generateElem("inputDiv", "div", "input-group mb-3 px-5 col-xs-2", "inputDiv", null, inputCont);
+    };
+    
+    // let headerDiv = document.getElementById("headerDiv");
+    // let inputCont = document.getElementById("inputCont");
+    
+    function allElements() {
+        generateElem("headerDiv", "div", "h1 text-center", "headerDiv", "Weather App", main);
+        generateElem("inputCont", "div", null, "inputCont", null, main);
+        generateElem("inputDiv", "div", "input-group mb-3 px-5 col-xs-2", "inputDiv", null, inputCont);
         generateElem("zipInput", "input", "form-control", "zipInput", null, inputDiv);
         generateElem("submitBtn", "button", "btn btn-outline-dark", "submitBtn", "Search", inputDiv);
-generateElem("cityCont", "div", "container p-2", "cityCont", null, main);
+        generateElem("cityCont", "div", "container p-2", "cityCont", null, main);
     generateElem("cityCard", "div", "card text-center border-dark", "cityCard", null, cityCont);
         generateElem("cityHead", "h5", "card-header bg-info", "cityHead", "City", cityCard);
         generateElem("cityBody", "div", "card-body", "cityBody", "Placeholder", cityCard);
