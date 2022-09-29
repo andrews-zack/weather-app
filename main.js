@@ -77,13 +77,13 @@ function allElements() {
             generateElem("cityBody", "div", "card-body", "cityBody", null, cityCard);
     generateElem("tempCont", "div", "container p-2", "tempCont", null, main);
         generateElem("tempGroup", "div", "card-group text-center border-dark", "tempGroup", null, tempCont);
-            generateElem("kelvCard", "div", "card col-12", "kelvCard", null, tempGroup);
+            generateElem("kelvCard", "div", "card flex-shrink-1", "kelvCard", null, tempGroup);
                 generateElem("kelvHead", "h5", "card-header bg-info text-info", "kelvHead", "hi", kelvCard);
                 generateElem("kelvBody", "div", "card-body", "kelvBody", null, kelvCard);
-            generateElem("farCard", "div", "card col-12", "farCard", null, tempGroup);
+            generateElem("farCard", "div", "card flex-shrink-1", "farCard", null, tempGroup);
                 generateElem("farHead", "h5", "card-header bg-info", "farHead", "Temperature", farCard);
                 generateElem("farBody", "div", "card-body", "farBody", null, farCard);
-            generateElem("celCard", "div", "card col-12", "celCard", null, tempGroup);
+            generateElem("celCard", "div", "card flex-shrink-1", "celCard", null, tempGroup);
                 generateElem("celHead", "h5", "card-header bg-info text-info", "celHead", "hi", celCard);
                 generateElem("celBody", "div", "card-body", "celBody", null, celCard);
     generateElem("condCont", "div", "container p-2", "condCont", null, main);
