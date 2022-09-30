@@ -1,5 +1,6 @@
 addEventListener("DOMContentLoaded", init);
 let main = document.getElementById("main");
+let body = document.getElementById("body");
 let submitBtn;
 const apiKey = "c80b9e6179cc79a9985529685d466a22"
 
@@ -101,3 +102,7 @@ function allElements() {
 zipInput.setAttribute("type", "text");
 zipInput.setAttribute("placeholder", "Enter your ZIP code");
 }
+
+// function funBackground() {
+//     if
+// }
