@@ -1,9 +1,11 @@
+// Running init() on page load, grab the div in the html, set global variables
 addEventListener("DOMContentLoaded", init);
 let main = document.getElementById("main");
-let body = document.getElementById("body");
+// let body = document.getElementById("body");
 let submitBtn;
 const apiKey = "c80b9e6179cc79a9985529685d466a22"
 
+// Helper function to run when an invalid ZIP is input
 function showError() {
     cityCont.classList.add("d-none");
     tempCont.classList.add("d-none");
@@ -12,6 +14,7 @@ function showError() {
     errorCont.classList.remove("d-none");
 };
 
+// Axios function to get data and update values on the page. Makes containers visisble.
 async function getWeather(url) {
     try {
     const response = await axios.get(url);
@@ -35,6 +38,7 @@ async function getWeather(url) {
     }
 }
 
+// Running on page load, hides all elements except the title and search bar/button. Adds event listener to button
 function init() {
     allElements();
     cityCont.classList.add("d-none");
@@ -50,6 +54,7 @@ function init() {
     });
 };
 
+// With the given parameters, will create an html element and nest it in the correct spot
 function generateElem(
     childVar,
     elem,
@@ -66,6 +71,7 @@ function generateElem(
         window[childVar] = document.getElementById(childVar);
 };
 
+// 12th wonder of the world, The Great Wall of functions for all the html elements on the page
 function allElements() {
     generateElem("headerDiv", "div", "h1 text-center", "headerDiv", "Weather App", main);
     generateElem("inputCont", "div", null, "inputCont", null, main);
@@ -103,6 +109,8 @@ zipInput.setAttribute("type", "text");
 zipInput.setAttribute("placeholder", "Enter your ZIP code");
 }
 
+
+// The start of creating a background for each weather type
 // function funBackground() {
 //     if
 // }
