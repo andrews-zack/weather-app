@@ -17,7 +17,7 @@ async function getWeather(url) {
     // console.log(response);
     cityBody.textContent = response.data.name;
     kelvBody.textContent = Math.round(response.data.main.temp) + "K";
-    farBody.textContent = Math.round(((response.data.main.temp) - 273.15) * (9/5) + 32) + "\u00B0" + "C";
+    farBody.textContent = Math.round(((response.data.main.temp) - 273.15) * (9/5) + 32) + "\u00B0" + "F";
     celBody.textContent = Math.round((response.data.main.temp) - 273.15) + "\u00B0" + "C";
     condBody.textContent = response.data.weather[0].description;
     iconBody.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
@@ -77,10 +77,10 @@ function allElements() {
             generateElem("cityBody", "div", "card-body", "cityBody", null, cityCard);
     generateElem("tempCont", "div", "container p-2", "tempCont", null, main);
         generateElem("tempGroup", "div", "card-group text-center border-dark", "tempGroup", null, tempCont);
-            generateElem("kelvCard", "div", "card flex-shrink-1", "kelvCard", null, tempGroup);
+            generateElem("kelvCard", "div", "card", "kelvCard", null, tempGroup);
                 generateElem("kelvHead", "h5", "card-header bg-info text-info", "kelvHead", "hi", kelvCard);
                 generateElem("kelvBody", "div", "card-body", "kelvBody", null, kelvCard);
-            generateElem("farCard", "div", "card flex-shrink-1", "farCard", null, tempGroup);
+            generateElem("farCard", "div", "card", "farCard", null, tempGroup);
                 generateElem("farHead", "h5", "card-header bg-info", "farHead", "Temperature", farCard);
                 generateElem("farBody", "div", "card-body", "farBody", null, farCard);
             generateElem("celCard", "div", "card flex-shrink-1", "celCard", null, tempGroup);
